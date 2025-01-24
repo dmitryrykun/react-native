@@ -20,6 +20,7 @@
 #include <react/renderer/core/ShadowNodeFragment.h>
 #include <react/renderer/core/State.h>
 #include <react/renderer/graphics/Float.h>
+#include "DynamicPropsUtilities.h"
 
 namespace facebook::react {
 
@@ -111,6 +112,16 @@ class ConcreteComponentDescriptor : public ComponentDescriptor {
     if constexpr (RawPropsFilterable<ShadowNodeT>) {
       ShadowNodeT::filterRawProps(rawProps);
     }
+
+#ifdef ANDROID
+    if (ReactNativeFeatureFlags::enableAccumulatedUpdatesInRawPropsAndroid()) {
+      auto& oldDynamicProps = props->dynamicProps;
+      auto newDynamicProps = rawProps.toDynamic(nullptr);
+      auto mergedDynamicProps = mergeDynamicProps(
+          oldDynamicProps, newDynamicProps, NullValueStrategy::Override);
+      rawProps = RawProps{mergedDynamicProps};
+    }
+#endif
 
     rawProps.parse(rawPropsParser_);
 

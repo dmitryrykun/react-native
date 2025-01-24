@@ -10,7 +10,6 @@
 #include <react/renderer/core/propsConversions.h>
 
 #include <react/featureflags/ReactNativeFeatureFlags.h>
-#include "DynamicPropsUtilities.h"
 
 namespace facebook::react {
 
@@ -31,17 +30,6 @@ void Props::initialize(
   nativeId = ReactNativeFeatureFlags::enableCppPropsIteratorSetter()
       ? sourceProps.nativeId
       : convertRawProp(context, rawProps, "nativeID", sourceProps.nativeId, {});
-#ifdef ANDROID
-  if (ReactNativeFeatureFlags::enableAccumulatedUpdatesInRawPropsAndroid()) {
-    auto& oldDynamicProps = sourceProps.dynamicProps;
-    auto newDynamicProps = rawProps.toDynamic(filterObjectKeys);
-    auto mergedDynamicProps = mergeDynamicProps(
-        oldDynamicProps, newDynamicProps, NullValueStrategy::Override);
-    this->dynamicProps = mergedDynamicProps;
-  } else {
-    this->dynamicProps = rawProps.toDynamic(filterObjectKeys);
-  }
-#endif
 }
 
 void Props::setProp(
