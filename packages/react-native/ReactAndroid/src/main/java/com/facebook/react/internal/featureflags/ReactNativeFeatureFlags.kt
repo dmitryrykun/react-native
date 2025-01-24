@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @generated SignedSource<<b859be47c2d48d62aff10ad54de36e55>>
+ * @generated SignedSource<<5b76a3c103226ac66e7aabff9e9f513f>>
  */
 
 /**
@@ -231,6 +231,12 @@ public object ReactNativeFeatureFlags {
    */
   @JvmStatic
   public fun traceTurboModulePromiseRejectionsOnAndroid(): Boolean = accessor.traceTurboModulePromiseRejectionsOnAndroid()
+
+  /**
+   * Works together with enableAccumulatedUpdatesInRawPropsAndroid. Restricts its effect only to instances of View.
+   */
+  @JvmStatic
+  public fun useAccumulatedRawPropsUpdatesOnlyInViewAndroid(): Boolean = accessor.useAccumulatedRawPropsUpdatesOnlyInViewAndroid()
 
   /**
    * In Bridgeless mode, use the always available javascript error reporting pipeline.

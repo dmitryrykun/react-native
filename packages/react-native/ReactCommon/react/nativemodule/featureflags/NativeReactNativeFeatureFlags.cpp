@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @generated SignedSource<<46dda28edd6e2354c572df6d36a7300a>>
+ * @generated SignedSource<<c0b184fd01c3d1b3f450c5208d714bb2>>
  */
 
 /**
@@ -219,6 +219,11 @@ bool NativeReactNativeFeatureFlags::loadVectorDrawablesOnImages(
 bool NativeReactNativeFeatureFlags::traceTurboModulePromiseRejectionsOnAndroid(
     jsi::Runtime& /*runtime*/) {
   return ReactNativeFeatureFlags::traceTurboModulePromiseRejectionsOnAndroid();
+}
+
+bool NativeReactNativeFeatureFlags::useAccumulatedRawPropsUpdatesOnlyInViewAndroid(
+    jsi::Runtime& /*runtime*/) {
+  return ReactNativeFeatureFlags::useAccumulatedRawPropsUpdatesOnlyInViewAndroid();
 }
 
 bool NativeReactNativeFeatureFlags::useAlwaysAvailableJSErrorHandling(

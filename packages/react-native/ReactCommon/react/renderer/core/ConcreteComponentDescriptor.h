@@ -114,7 +114,10 @@ class ConcreteComponentDescriptor : public ComponentDescriptor {
     }
 
 #ifdef ANDROID
-    if (ReactNativeFeatureFlags::enableAccumulatedUpdatesInRawPropsAndroid()) {
+    if (ReactNativeFeatureFlags::enableAccumulatedUpdatesInRawPropsAndroid() ||
+        (ReactNativeFeatureFlags::
+             useAccumulatedRawPropsUpdatesOnlyInViewAndroid() &&
+         strcmp(getComponentName(), "View") == 0)) {
       auto& oldDynamicProps = props->dynamicProps;
       auto newDynamicProps = rawProps.toDynamic(nullptr);
       auto mergedDynamicProps = mergeDynamicProps(
@@ -126,6 +129,7 @@ class ConcreteComponentDescriptor : public ComponentDescriptor {
     rawProps.parse(rawPropsParser_);
 
     auto shadowNodeProps = ShadowNodeT::Props(context, rawProps, props);
+
     // Use the new-style iterator
     // Note that we just check if `Props` has this flag set, no matter
     // the type of ShadowNode; it acts as the single global flag.

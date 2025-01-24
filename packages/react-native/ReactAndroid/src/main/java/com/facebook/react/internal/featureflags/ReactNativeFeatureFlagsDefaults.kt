@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @generated SignedSource<<2d28a6cd8bce4cb845511749e46a6695>>
+ * @generated SignedSource<<0561063f7129a1c3c23ed0926e128f57>>
  */
 
 /**
@@ -90,6 +90,8 @@ public open class ReactNativeFeatureFlagsDefaults : ReactNativeFeatureFlagsProvi
   override fun loadVectorDrawablesOnImages(): Boolean = true
 
   override fun traceTurboModulePromiseRejectionsOnAndroid(): Boolean = false
+
+  override fun useAccumulatedRawPropsUpdatesOnlyInViewAndroid(): Boolean = false
 
   override fun useAlwaysAvailableJSErrorHandling(): Boolean = false
 

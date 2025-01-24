@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @generated SignedSource<<592c874bdb2eb8ace8dd0f95ccb0024a>>
+ * @generated SignedSource<<037be6c951ac418fb53d5eff3927dcec>>
  */
 
 /**
@@ -208,6 +208,11 @@ class ReactNativeFeatureFlags {
    * Enables storing js caller stack when creating promise in native module. This is useful in case of Promise rejection and tracing the cause.
    */
   RN_EXPORT static bool traceTurboModulePromiseRejectionsOnAndroid();
+
+  /**
+   * Works together with enableAccumulatedUpdatesInRawPropsAndroid. Restricts its effect only to instances of View.
+   */
+  RN_EXPORT static bool useAccumulatedRawPropsUpdatesOnlyInViewAndroid();
 
   /**
    * In Bridgeless mode, use the always available javascript error reporting pipeline.

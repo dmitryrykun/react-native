@@ -222,12 +222,16 @@ jni::local_ref<jobject> getProps(
   // is enabled.
   auto* oldProps = oldShadowView.props.get();
   auto* newProps = newShadowView.props.get();
+  auto isView = strcmp(newShadowView.componentName, "View") == 0;
   if (ReactNativeFeatureFlags::enablePropsUpdateReconciliationAndroid() &&
-      strcmp(newShadowView.componentName, "View") == 0) {
+      isView) {
     return ReadableNativeMap::newObjectCxxArgs(
         newProps->getDiffProps(oldProps));
   }
-  if (ReactNativeFeatureFlags::enableAccumulatedUpdatesInRawPropsAndroid()) {
+  if (ReactNativeFeatureFlags::enableAccumulatedUpdatesInRawPropsAndroid() ||
+      (ReactNativeFeatureFlags::
+           useAccumulatedRawPropsUpdatesOnlyInViewAndroid() &&
+       isView)) {
     if (oldProps == nullptr) {
       return ReadableNativeMap::newObjectCxxArgs(newProps->dynamicProps);
     } else {

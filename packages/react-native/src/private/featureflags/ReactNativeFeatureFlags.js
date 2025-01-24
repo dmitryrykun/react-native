@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @generated SignedSource<<d9e44ddbf1972707fbf74659c41fe151>>
+ * @generated SignedSource<<9c375f3e1b1e276732ceb12b5bec0625>>
  * @flow strict
  */
 
@@ -82,6 +82,7 @@ export type ReactNativeFeatureFlags = $ReadOnly<{
   lazyAnimationCallbacks: Getter<boolean>,
   loadVectorDrawablesOnImages: Getter<boolean>,
   traceTurboModulePromiseRejectionsOnAndroid: Getter<boolean>,
+  useAccumulatedRawPropsUpdatesOnlyInViewAndroid: Getter<boolean>,
   useAlwaysAvailableJSErrorHandling: Getter<boolean>,
   useEditTextStockAndroidFocusBehavior: Getter<boolean>,
   useFabricInterop: Getter<boolean>,
@@ -304,6 +305,10 @@ export const loadVectorDrawablesOnImages: Getter<boolean> = createNativeFlagGett
  * Enables storing js caller stack when creating promise in native module. This is useful in case of Promise rejection and tracing the cause.
  */
 export const traceTurboModulePromiseRejectionsOnAndroid: Getter<boolean> = createNativeFlagGetter('traceTurboModulePromiseRejectionsOnAndroid', false);
+/**
+ * Works together with enableAccumulatedUpdatesInRawPropsAndroid. Restricts its effect only to instances of View.
+ */
+export const useAccumulatedRawPropsUpdatesOnlyInViewAndroid: Getter<boolean> = createNativeFlagGetter('useAccumulatedRawPropsUpdatesOnlyInViewAndroid', false);
 /**
  * In Bridgeless mode, use the always available javascript error reporting pipeline.
  */
